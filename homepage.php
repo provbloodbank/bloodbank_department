@@ -1,0 +1,108 @@
+<?php
+session_start();
+if (isset($_SESSION['userid']) && isset($_SESSION['user_type'])) {
+  if ($_SESSION['user_type'] == 'seeker') {
+    // Only seeker can access this page
+    header("Location: client_dashboard.php");
+    exit();
+  }
+  elseif ($_SESSION['user_type'] == 'donor'){
+    // Handle other user types or redirect to a default page
+    header("Location: donor_dashboard.php");
+    exit();
+}
+}
+include 'connect.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <!-- My CSS -->
+  <link rel="stylesheet" href="homestyle.css">
+  <title>Home</title>
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <i class='bx bxs-smile'></i>
+      <span class="text">Welcome</span>
+    </a>
+    <ul class="side-menu top">
+      <li class="active">
+        <a href="homepage.php">
+          <i class='bx bxs-dashboard'></i>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="becomedonor.php">
+          <i class='bx bxs-donate-blood'></i>
+          <span class="text">Become a Donor</span>
+        </a>
+      </li>
+      <li>
+        <a href="requestblood.php">
+          <i class='bx bx-notepad'></i>
+          <span class="text">Request Blood</span>
+        </a>
+      </li>
+      <li>
+        <a href="checkbloodinventory.php">
+          <i class='bx bxs-shopping-bag-alt'></i>
+          <span class="text">Check Blood Inventory </span>
+        </a>
+      </li>
+    </ul>
+    <ul class="side-menu">
+      <li>
+        <a href="adminlogin.php" class="logout">
+          <i class='bx bxs-log-in-circle'></i>
+          <span class="text">Login</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- SIDEBAR -->
+  <!-- CONTENT -->
+  <section id="content">
+    <!-- NAVBAR -->
+    <nav>
+      <i class='bx bx-menu'></i>
+    </nav>
+    <!-- NAVBAR -->
+    <!-- MAIN -->
+    <main>
+      <p><img src="gfndy_banner.png" border="0" alt="Gov Faustino N. Dy, Sr Memorial Hospital_banner"
+          title="Gov Faustino N. Dy, Sr Memorial Hospital" width="642" height="128"
+          style="display: block; margin-left: auto; margin-right: auto;"></p>
+      <p align="center" >Maharlika Rd., Calamagui 2<sup>nd</sup>, City of Ilagan Isabela</p>
+      <p align="center">Tel. No.(078) 624-1688 Fax No. 624-1295 / 624-1734</p>
+      <br>
+      <!-- Overview of the Website's Purpose -->
+      <section id="overview">
+        <h2>About Us</h2>
+        <p>Our mission is to connect blood donors with those in need, ensuring a seamless and efficient process for
+          blood donations and requests. By providing a platform where donors can register and seekers can request
+          blood, we aim to save lives and support communities.</p>
+      </section>
+      <br>
+      <!-- Call-to-action Buttons -->
+      <section id="cta">
+        <h2>Get Involved</h2>
+        <div class="cta-buttons">
+          <a href="becomedonor.php" class="button">Become a Donor</a>
+          <a href="requestblood.php" class="button">Request Blood</a>
+        </div>
+      </section>
+    </main>
+    <!-- MAIN -->
+  </section>
+  <!-- CONTENT -->
+  <script src="script.js"></script>
+</body>
+</html>
